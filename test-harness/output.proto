@@ -1,0 +1,126 @@
+syntax = "proto3";
+
+package package;
+
+service pet {
+    // Add a new pet to the store
+    rpc addPet(Pet) returns {}
+
+    // Update an existing pet
+    rpc updatePet(Pet) returns {}
+
+    // Finds Pets by status
+    rpc findPetsByStatus(findPetsByStatusRequest) returns {}
+
+    // Finds Pets by tags
+    rpc findPetsByTags(findPetsByTagsRequest) returns {}
+
+    // Find pet by ID
+    rpc getPetById(getPetByIdRequest) returns {}
+
+    // Updates a pet in the store with form data
+    rpc updatePetWithForm(updatePetWithFormRequest) returns {}
+
+    // Deletes a pet
+    rpc deletePet(deletePetRequest) returns {}
+
+    // uploads an image
+    rpc uploadFile(uploadFileRequest) returns {}
+}
+
+service store {
+    // Returns pet inventories by status
+    rpc getInventory(getInventoryRequest) returns {}
+
+    // Place an order for a pet
+    rpc placeOrder(Order) returns {}
+
+    // Find purchase order by ID
+    rpc getOrderById(getOrderByIdRequest) returns {}
+
+    // Delete purchase order by ID
+    rpc deleteOrder(deleteOrderRequest) returns {}
+}
+
+service user {
+    // Create user
+    rpc createUser(User) returns {}
+
+    // Creates list of users with given input array
+    rpc createUsersWithArrayInput(User) returns {}
+
+    // Creates list of users with given input array
+    rpc createUsersWithListInput(User) returns {}
+
+    // Logs user into the system
+    rpc loginUser(loginUserRequest) returns {}
+
+    // Logs out current logged in user session
+    rpc logoutUser(logoutUserRequest) returns {}
+
+    // Get user by user name
+    rpc getUserByName(getUserByNameRequest) returns {}
+
+    // Updated user
+    rpc updateUser(updateUserRequest) returns {}
+
+    // Delete user
+    rpc deleteUser(deleteUserRequest) returns {}
+}
+
+enum status_Order {
+    placed = 0;
+    approved = 1;
+    delivered = 2;
+}
+
+enum status_Pet {
+    available = 0;
+    pending = 1;
+    sold = 2;
+}
+
+message ApiResponse {
+    int32 code = 0;
+    string type = 1;
+    string message = 2;
+}
+
+message Category {
+    int64 id = 0;
+    string name = 1;
+}
+
+message Order {
+    int64 id = 0;
+    int64 petId = 1;
+    int32 quantity = 2;
+    DateTime shipDate = 3;
+    status_Order status = 4;
+    bool complete = 5;
+}
+
+message Pet {
+    int64 id = 0;
+    Category category = 1;
+    string name = 2;
+    repeated string photoUrls = 3;
+    repeated Tag tags = 4;
+    status_Pet status = 5;
+}
+
+message Tag {
+    int64 id = 0;
+    string name = 1;
+}
+
+message User {
+    int64 id = 0;
+    string username = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string email = 4;
+    string password = 5;
+    string phone = 6;
+    int32 userStatus = 7;
+}

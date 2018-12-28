@@ -1,0 +1,17 @@
+{
+    "protobuf": {
+        "output": "./output.protobuf",
+        "generator": "protobuf",
+        "mode": "protobuf",
+        "transforms": {
+            "serviceName": "pascal-case",
+            "operationName": "camel-case",
+            "modelName": "pascal-case",
+            "propertyName": "camel-case"
+        },
+        "url": "http://petstore.swagger.io/v2/swagger.json",
+        "options": {
+            "package": "package"
+        }
+    }
+}
