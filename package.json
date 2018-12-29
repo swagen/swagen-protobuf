@@ -1,6 +1,6 @@
 {
     "name": "swagen-protobuf",
-    "version": "1.0.0-beta.1",
+    "version": "1.0.0-beta.3",
     "description": "Swagen generator for Protocol Buffers .proto files",
     "main": "index.js",
     "typings": "index.d.ts",
